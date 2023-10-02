@@ -1,26 +1,17 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { TravelComponent } from './travel/travel.component';
-import { HomeComponent } from "./home/home.component";
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { routing } from "./app-routing.module";
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { AppComponent } from "./app.component";
+import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
+import { HttpClientModule } from "@angular/common/http";
+import { CookieService } from "ngx-cookie-service";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        TravelComponent,
-        LoginComponent,
-        RegisterComponent
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HomeComponent
-    ]
+  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  imports: [BrowserModule, routing, FormsModule, HttpClientModule],
+  providers: [CookieService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

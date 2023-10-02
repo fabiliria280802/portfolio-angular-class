@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { UsersService } from "../users/users.service";
 import { CommonModule } from '@angular/common';
 import { TravelingLocationComponent } from '../traveling-location/traveling-location.component';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, TravelingLocationComponent],
-  template: `
+  //standalone: true,
+  //imports: [CommonModule, TravelingLocationComponent],
+  templateUrl: "./home.component.html",
+  /*template: `
   <section>
     <form>
       <input type="text" placeholder="Filter by city">
@@ -16,9 +18,17 @@ import { TravelingLocationComponent } from '../traveling-location/traveling-loca
   <section class="results">
     <app-traveling-location></app-traveling-location>
   </section>
-  `,
+  `,*/
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-
+export class HomeComponent implements OnInit {
+  constructor(public userService: UsersService) {}
+  ngOnInit() {
+    this.getUserLogged();
+  }
+  getUserLogged() {
+    this.userService.getUser().subscribe((user) => {
+      console.log(user);
+    });
+  }
 }
