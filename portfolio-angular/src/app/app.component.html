@@ -5,9 +5,11 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mt-4">
       <ul class="list-group">
-
+        <li *ngFor="let country of countryArray" class="list-group-item list-group-item-action">
+          <span class="badge badge-primary">{{country.id}}</span>{{country.name}} -{{country.capital}}
+        </li>
       </ul>
       <div class="card mt-4">
         <div class="card-body">
